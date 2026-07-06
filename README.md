@@ -1,6 +1,6 @@
 # 🍔 Burger 101 — World's Best Burgers Map
 
-An interactive map of the **World's 101 Best Burgers (2026)**, inspired by [PetrolSpy](https://petrolspy.com.au/map). Browse every ranked burger restaurant on a world map, search by name or city, filter by rank or region, and get directions to the exact spot.
+An interactive map of the **World's 101 Best Burgers (2026)**. Browse every ranked burger restaurant on a world map, search by name or city, filter by rank or region, and get directions to the exact spot.
 
 Built as a **single self-contained HTML file** — no build step, no server, no dependencies to install. It runs in any modern browser on Android, iOS, Windows, macOS, and Linux.
 
