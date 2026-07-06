@@ -2,6 +2,8 @@
 
 An interactive map of the **World's 101 Best Burgers (2026)**. Browse every ranked burger restaurant on a world map, search by name or city, filter by rank or region, and get directions to the exact spot.
 
+100% Vibe Coding based
+
 > Ranking data sourced from [worldbestburgers.com](https://www.worldbestburgers.com/our-list). 
 
 ## ✨ Features
