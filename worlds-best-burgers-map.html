@@ -150,6 +150,8 @@
     .chips{left:360px;right:0;top:66px}
     header{padding-left:20px}
   }
+  .pp-burger{font-size:12px;color:var(--gold);margin-top:6px;line-height:1.45;font-weight:600}
+  .bg{font-size:11px;color:var(--gold);margin-top:3px;line-height:1.35}
 </style>
 </head>
 <body>
@@ -195,112 +197,112 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script>
-// rank, name, city, region, lat, lng, instagram
+// rank, name, city, region, lat, lng, instagram, signature burger
 const R=[
-[1,"Bleecker","London","Europe",51.5205,-0.0759,"bleeckerburger"],
-[2,"Black Bear Burger","London","Europe",51.5246,-0.0795,"black_bear_burger"],
-[3,"Café Margaret","Double Bay, Sydney","Oceania",-33.8770,151.2430,"cafemargaretdoublebay"],
-[4,"The Diplomat","Hong Kong","Asia",22.2819,114.1556,"thediplomathk"],
-[5,"Gasoline Grill","Copenhagen","Europe",55.6830,12.5860,"gasolinegrill"],
-[6,"Sip & Guzzle","New York","Americas",40.7336,-74.0027,"sipandguzzlenyc"],
-[7,"Hawksmoor St Pancras","London","Europe",51.5300,-0.1258,"hawksmoorrestaurants"],
-[8,"Nowon","New York","Americas",40.7259,-73.9846,"nowon.usa"],
-[9,"Amboy Quality Meats","Los Angeles","Americas",34.0505,-118.2400,"amboy_qualitymeats"],
-[10,"The Grill at the International","Sydney","Oceania",-33.8650,151.2030,"theinternationalsydney"],
-[11,"Burger & Beyond","London","Europe",51.5230,-0.0870,"burgerandbeyond"],
-[12,"Wagyumafia","Tokyo","Asia",35.6595,139.7005,"wagyumafiaburger"],
-[13,"Charrd","Melbourne","Oceania",-37.8136,144.9631,"charrdbk"],
-[14,"Will's","Coogee, Sydney","Oceania",-33.9198,151.2570,"wills_coogee"],
-[15,"Camphor","Los Angeles","Americas",34.0450,-118.2350,"camphorla"],
-[16,"Hubert","Sydney","Oceania",-33.8646,151.2100,"restauranthubert"],
-[17,"Bar Julius","Redfern, Sydney","Oceania",-33.8932,151.2043,"barjulius.redfern"],
-[18,"AG","Stockholm","Europe",59.3360,18.0350,"restaurang_ag"],
-[19,"The Gidley","Sydney","Oceania",-33.8660,151.2075,"thegidley"],
-[20,"Salt Shed","Brighton","Europe",50.8225,-0.1372,"saltshed"],
-[21,"Clam Bar","Sydney","Oceania",-33.8670,151.2110,"clambarsydney"],
-[22,"The Loyalist","Chicago","Americas",41.8963,-87.6553,"theloyalistchicago"],
-[23,"Bunsen Burgers","Dublin","Europe",53.3440,-6.2630,"bunsenburgers"],
-[24,"Bar Chimera","New York","Americas",40.7180,-73.9900,"barchimera"],
-[25,"The Alston","Chicago","Americas",41.8850,-87.6350,"thealston_chicago"],
-[26,"Dumbo","Paris","Europe",48.8680,2.3400,"dumboparis"],
-[27,"Reburger","Florence","Europe",43.7710,11.2550,"reburgerfirenze"],
-[28,"Meat Stop","London","Europe",51.5150,-0.1400,"meatstop_"],
-[29,"Dandelion Burger","Copenhagen","Europe",55.6650,12.5450,"dandelionburger"],
-[30,"Gui's Burger","Ashiya, Japan","Asia",34.7280,135.3030,"meetyourwagyu"],
-[31,"Eat Jabs","Austin","Americas",30.2700,-97.7400,"eatjabs"],
-[32,"Petit Trois","Los Angeles","Americas",34.0838,-118.3290,"petittroisla"],
-[33,"Sold Out Burger","Paris","Europe",48.8720,2.3550,"sold_out_burger_"],
-[34,"Maijard Smashburgers","Antwerp","Europe",51.2194,4.4025,"maijardsmashburgers"],
-[35,"Sailor","New York","Americas",40.6890,-73.9740,"sailor_nyc"],
-[36,"Bunzai","Zurich","Europe",47.3769,8.5417,"bunzai.smash"],
-[37,"Seoul Tiger","Melbourne","Oceania",-37.8080,144.9700,"seoultiger1988"],
-[38,"Fat Rabbit","St. Catharines, Canada","Americas",43.1594,-79.2469,"fatrabbit"],
-[39,"Dai Due","Austin","Americas",30.2640,-97.7220,"daidue"],
-[40,"Specimen Burger","Paris","Europe",48.8600,2.3700,"specimenburger"],
-[41,"Sstash Burger","Mission, TX","Americas",26.2159,-98.3253,"sstashburger"],
-[42,"NADC Burger","Nashville","Americas",36.1580,-86.7760,"nadcburger"],
-[43,"Sunny's","Miami","Americas",25.7900,-80.2100,"sunnysmia"],
-[44,"La Birra Bar","Miami","Americas",25.8330,-80.1830,"labirrabar.usa"],
-[45,"Arkhé","Adelaide","Oceania",-34.9285,138.6007,"arkhe_restaurant"],
-[46,"Fireside","Hong Kong","Asia",22.2830,114.1700,"fireside.hk"],
-[47,"Goldies Bar","Berlin","Europe",52.4930,13.4230,"goldies.bar"],
-[48,"Bon Burger","Amsterdam","Europe",52.3676,4.9041,"bonburgerbar"],
-[49,"Masonry","Bali","Asia",-8.6478,115.1385,"masonry.bali"],
-[50,"Meatsmith","Singapore","Asia",1.2800,103.8470,"meatsmith.sg"],
-[51,"Brash","Cape Town","Africa",-33.9249,18.4241,"brashburger"],
-[52,"Grindhouse Burger","Berlin","Europe",52.5330,13.4130,"grindhouseburger"],
-[53,"Hanbaagaa Suuteeki","London","Europe",51.5110,-0.1230,"hanbaagaasuuteeki"],
-[54,"Heard","London","Europe",51.4900,-0.0700,"heard.burger"],
-[55,"POPL Burger","Copenhagen","Europe",55.6720,12.5930,"poplburger"],
-[56,"El Perro Negro","Glasgow","Europe",55.8642,-4.2518,"elperronegroburgers"],
-[57,"Flaco","Santiago de Compostela","Europe",42.8782,-8.5449,"flaco.scq"],
-[58,"Smash Street Burger Bar","Singapore","Asia",1.3000,103.8550,"smashstreet.sg"],
-[59,"Kitan Hibiki","Osaka","Asia",34.6937,135.5023,"kitan_hibiki"],
-[60,"Clover Grill","Paris","Europe",48.8560,2.3440,"clovergrillparis"],
-[61,"Prime + Proper","Detroit","Americas",42.3320,-83.0490,"primeandproperrestaurants"],
-[62,"Hundred Burgers","Madrid","Europe",40.4200,-3.7000,"hundredburgers_"],
-[63,"Red Hook Tavern","New York","Americas",40.6770,-74.0110,"redhooktavernbk"],
-[64,"Débutant Dining","Wollongong, NSW","Oceania",-34.4278,150.8931,"debutantdining"],
-[65,"One Club Row","London","Europe",51.5240,-0.0710,"oneclubrow"],
-[66,"Miller & Lux","San Francisco","Americas",37.7680,-122.3870,"millerandlux"],
-[67,"Char Fuego y Brasas","Tenerife","Europe",28.2916,-16.6291,"char_fuegoybrasas"],
-[68,"Asador Bastian","Chicago","Americas",41.8920,-87.6300,"asadorbastian"],
-[69,"The Grand Bar & Grill","Helsinki","Europe",60.1699,24.9384,"thegrand_helsinki"],
-[70,"Hermon's","Los Angeles","Americas",34.0620,-118.3080,"hermonsla"],
-[71,"Dreamburger","Nashville","Americas",36.1700,-86.7900,"dreamburgernash"],
-[72,"Peckish Burgers","London","Europe",51.5400,-0.1450,"peckish_burgers"],
-[73,"Funky Chicken Food Truck","Stockholm","Europe",59.3150,18.0750,"funkychickenfoodtruck"],
-[74,"Txula","New York","Americas",40.7220,-73.9870,"txulasteak"],
-[75,"Le Smash Burger","Amsterdam","Europe",52.3600,4.8850,"le_smashburger"],
-[76,"11 Woodfire","Dubai","Asia",25.1930,55.2500,"11woodfire"],
-[77,"Le Rêve Restaurant","Brownsville, TX","Americas",25.9017,-97.4975,"le.reve.restaurant"],
-[78,"Gabos","Madrid","Europe",40.4300,-3.6880,"gabosmadrid"],
-[79,"Zuney","Cape Town","Africa",-33.9100,18.4100,"zuneywagyu"],
-[80,"Gotham Burger Social Club","New York","Americas",40.7150,-73.9840,"gothamburgersocialclub"],
-[81,"CPH Smash","Copenhagen","Europe",55.6900,12.5530,"cphsmash"],
-[82,"Black Cactus BBQ","London","Europe",51.5340,-0.0570,"black.cactus.bbq"],
-[83,"Little Bad Wolf","Chicago","Americas",41.9790,-87.6690,"littlebadwolfchicago"],
-[84,"The Boring Burger","Guildford","Europe",51.2362,-0.5704,"theboringburger"],
-[85,"Boneless","Helsinki","Europe",60.1620,24.9300,"boneless.fi"],
-[86,"Down South Deli","Oslo","Europe",59.9139,10.7522,"downsouthdeli"],
-[87,"Dove","London","Europe",51.5480,-0.0750,"i.feel.dove"],
-[88,"Hamburger America","New York","Americas",40.7270,-74.0030,"hamburger_america"],
-[89,"Grindhouse Braserito","São Paulo","Americas",-23.5505,-46.6333,"grindhouse_braserito"],
-[90,"Dash Burger","Dublin","Europe",53.3420,-6.2500,"dashburger_"],
-[91,"Rekas Burgers","Malmö","Europe",55.6050,13.0038,"rekasburgers"],
-[92,"Jet Set","Providencia, Santiago","Americas",-33.4263,-70.6110,"soyjetset"],
-[93,"Jonas Burger","Dubai","Asia",25.2100,55.2750,"jonasburger.ae"],
-[94,"Franky's","Stockholm","Europe",59.3400,18.0600,"frankysburger"],
-[95,"Goldies Smashburger","Berlin","Europe",52.5100,13.3900,"goldies_smashburger"],
-[96,"Eleven Green","Dubai","Asia",25.1400,55.1850,"elevengreen.uae"],
-[97,"Doug's Burger","Oslo","Europe",59.9200,10.7400,"dougshamburger"],
-[98,"Leytonstone Tavern","London","Europe",51.5680,0.0100,"leytonstonetavern"],
-[99,"Simonette","Culver City, LA","Americas",34.0211,-118.3965,"simonetterestaurant"],
-[100,"Mosh Burgers","Bruges","Europe",51.2093,3.2247,"mosh_burgers"],
-[101,"HiHo Cheeseburger","Santa Monica, LA","Americas",34.0130,-118.4900,"hihocheeseburger"]
+[1,"Bleecker","London","Europe",51.5205,-0.0759,"bleeckerburger","The Bleecker Cheeseburger — dry-aged beef, American cheese, onion & secret sauce"],
+[2,"Black Bear Burger","London","Europe",51.5246,-0.0795,"black_bear_burger","The Original — butter-aged beef cheeseburger"],
+[3,"Café Margaret","Double Bay, Sydney","Oceania",-33.8770,151.2430,"cafemargaretdoublebay","American Cheeseburger — CopperTree Farms beef, rose mayo, milk bun"],
+[4,"The Diplomat","Hong Kong","Asia",22.2819,114.1556,"thediplomathk","The Diplomat Burger — Ozaki wagyu quarter-pounder, cheddar, sesame bun"],
+[5,"Gasoline Grill","Copenhagen","Europe",55.6830,12.5860,"gasolinegrill","The Butterburger — organic beef, butter-toasted bun"],
+[6,"Sip & Guzzle","New York","Americas",40.7336,-74.0027,"sipandguzzlenyc","Miyazaki A5 Wagyu Burger — limited to ~12 per service"],
+[7,"Hawksmoor St Pancras","London","Europe",51.5300,-0.1258,"hawksmoorrestaurants","The Hawksmoor Cheeseburger — dry-aged British beef"],
+[8,"Nowon","New York","Americas",40.7259,-73.9846,"nowon.usa","The Legendary Burger — kimchi special sauce & honey-butter chips"],
+[9,"Amboy Quality Meats","Los Angeles","Americas",34.0505,-118.2400,"amboy_qualitymeats","Amboy Cheeseburger — dry-aged beef by Alvin Cailan"],
+[10,"The Grill at the International","Sydney","Oceania",-33.8650,151.2030,"theinternationalsydney","Signature grill cheeseburger"],
+[11,"Burger & Beyond","London","Europe",51.5230,-0.0870,"burgerandbeyond","Bacon Butter Burger — 45-day-aged beef"],
+[12,"Wagyumafia","Tokyo","Asia",35.6595,139.7005,"wagyumafiaburger","Kobe Beef Cheeseburger"],
+[13,"Charrd","Melbourne","Oceania",-37.8136,144.9631,"charrdbk","Wagyu smash cheeseburger"],
+[14,"Will's","Coogee, Sydney","Oceania",-33.9198,151.2570,"wills_coogee","Signature cheeseburger"],
+[15,"Camphor","Los Angeles","Americas",34.0450,-118.2350,"camphorla","The Camphor Burger — French-style cheeseburger"],
+[16,"Hubert","Sydney","Oceania",-33.8646,151.2100,"restauranthubert","The Hubert Burger — French bistro cheeseburger"],
+[17,"Bar Julius","Redfern, Sydney","Oceania",-33.8932,151.2043,"barjulius.redfern","Signature cheeseburger"],
+[18,"AG","Stockholm","Europe",59.3360,18.0350,"restaurang_ag","Dry-aged cheeseburger"],
+[19,"The Gidley","Sydney","Oceania",-33.8660,151.2075,"thegidley","The Gidley Burger — steakhouse cheeseburger"],
+[20,"Salt Shed","Brighton","Europe",50.8225,-0.1372,"saltshed","Signature smash cheeseburger"],
+[21,"Clam Bar","Sydney","Oceania",-33.8670,151.2110,"clambarsydney","Clam Bar Cheeseburger — classic with a martini"],
+[22,"The Loyalist","Chicago","Americas",41.8963,-87.6553,"theloyalistchicago","The Dirty Burg — double cheeseburger"],
+[23,"Bunsen Burgers","Dublin","Europe",53.3440,-6.2630,"bunsenburgers","Bunsen Cheeseburger — famously minimal menu"],
+[24,"Bar Chimera","New York","Americas",40.7180,-73.9900,"barchimera","Signature cheeseburger"],
+[25,"The Alston","Chicago","Americas",41.8850,-87.6350,"thealston_chicago","Dry-aged steakhouse cheeseburger"],
+[26,"Dumbo","Paris","Europe",48.8680,2.3400,"dumboparis","Smash cheeseburger"],
+[27,"Reburger","Florence","Europe",43.7710,11.2550,"reburgerfirenze","Smash cheeseburger"],
+[28,"Meat Stop","London","Europe",51.5150,-0.1400,"meatstop_","Smash cheeseburger"],
+[29,"Dandelion Burger","Copenhagen","Europe",55.6650,12.5450,"dandelionburger","Organic smash cheeseburger"],
+[30,"Gui's Burger","Ashiya, Japan","Asia",34.7280,135.3030,"meetyourwagyu","Wagyu burger"],
+[31,"Eat Jabs","Austin","Americas",30.2700,-97.7400,"eatjabs","Smash cheeseburger"],
+[32,"Petit Trois","Los Angeles","Americas",34.0838,-118.3290,"petittroisla","Big Mec — double cheeseburger with bordelaise"],
+[33,"Sold Out Burger","Paris","Europe",48.8720,2.3550,"sold_out_burger_","Smash cheeseburger"],
+[34,"Maijard Smashburgers","Antwerp","Europe",51.2194,4.4025,"maijardsmashburgers","Smash cheeseburger"],
+[35,"Sailor","New York","Americas",40.6890,-73.9740,"sailor_nyc","Sailor Cheeseburger — by April Bloomfield"],
+[36,"Bunzai","Zurich","Europe",47.3769,8.5417,"bunzai.smash","Smash cheeseburger"],
+[37,"Seoul Tiger","Melbourne","Oceania",-37.8080,144.9700,"seoultiger1988","Korean-style smash burger"],
+[38,"Fat Rabbit","St. Catharines, Canada","Americas",43.1594,-79.2469,"fatrabbit","Smash cheeseburger"],
+[39,"Dai Due","Austin","Americas",30.2640,-97.7220,"daidue","Texas beef cheeseburger — house-ground, wild game menu"],
+[40,"Specimen Burger","Paris","Europe",48.8600,2.3700,"specimenburger","Signature double smash — aged beef, cheddar, potato bun"],
+[41,"Sstash Burger","Mission, TX","Americas",26.2159,-98.3253,"sstashburger","Smash cheeseburger"],
+[42,"NADC Burger","Nashville","Americas",36.1580,-86.7760,"nadcburger","Wagyu smashburger"],
+[43,"Sunny's","Miami","Americas",25.7900,-80.2100,"sunnysmia","Dry-aged steakhouse burger"],
+[44,"La Birra Bar","Miami","Americas",25.8330,-80.1830,"labirrabar.usa","Signature stacked cheeseburger"],
+[45,"Arkhé","Adelaide","Oceania",-34.9285,138.6007,"arkhe_restaurant","Wood-fired cheeseburger"],
+[46,"Fireside","Hong Kong","Asia",22.2830,114.1700,"fireside.hk","Wood-fired burger"],
+[47,"Goldies Bar","Berlin","Europe",52.4930,13.4230,"goldies.bar","Smash cheeseburger"],
+[48,"Bon Burger","Amsterdam","Europe",52.3676,4.9041,"bonburgerbar","Smash cheeseburger"],
+[49,"Masonry","Bali","Asia",-8.6478,115.1385,"masonry.bali","Signature cheeseburger"],
+[50,"Meatsmith","Singapore","Asia",1.2800,103.8470,"meatsmith.sg","Signature cheeseburger"],
+[51,"Brash","Cape Town","Africa",-33.9249,18.4241,"brashburger","Wagyu smash burger"],
+[52,"Grindhouse Burger","Berlin","Europe",52.5330,13.4130,"grindhouseburger","Smash cheeseburger"],
+[53,"Hanbaagaa Suuteeki","London","Europe",51.5110,-0.1230,"hanbaagaasuuteeki","Shrimp Kong Baga — smash patty with fried shrimp"],
+[54,"Heard","London","Europe",51.4900,-0.0700,"heard.burger","Smash cheeseburger"],
+[55,"POPL Burger","Copenhagen","Europe",55.6720,12.5930,"poplburger","POPL Cheeseburger — organic beef, founded by Noma alumni"],
+[56,"El Perro Negro","Glasgow","Europe",55.8642,-4.2518,"elperronegroburgers","Top Dog — dry-aged Scottish beef burger"],
+[57,"Flaco","Santiago de Compostela","Europe",42.8782,-8.5449,"flaco.scq","Smash cheeseburger"],
+[58,"Smash Street Burger Bar","Singapore","Asia",1.3000,103.8550,"smashstreet.sg","Smash cheeseburger"],
+[59,"Kitan Hibiki","Osaka","Asia",34.6937,135.5023,"kitan_hibiki","Wagyu burger"],
+[60,"Clover Grill","Paris","Europe",48.8560,2.3440,"clovergrillparis","Signature grilled cheeseburger"],
+[61,"Prime + Proper","Detroit","Americas",42.3320,-83.0490,"primeandproperrestaurants","Dry-aged steakhouse cheeseburger"],
+[62,"Hundred Burgers","Madrid","Europe",40.4200,-3.7000,"hundredburgers_","Signature smash cheeseburger"],
+[63,"Red Hook Tavern","New York","Americas",40.6770,-74.0110,"redhooktavernbk","Dry-Aged Tavern Burger — American cheese & white onion"],
+[64,"Débutant Dining","Wollongong, NSW","Oceania",-34.4278,150.8931,"debutantdining","Signature cheeseburger"],
+[65,"One Club Row","London","Europe",51.5240,-0.0710,"oneclubrow","Signature burger"],
+[66,"Miller & Lux","San Francisco","Americas",37.7680,-122.3870,"millerandlux","Dry-aged steakhouse cheeseburger"],
+[67,"Char Fuego y Brasas","Tenerife","Europe",28.2916,-16.6291,"char_fuegoybrasas","Wood-fired burger"],
+[68,"Asador Bastian","Chicago","Americas",41.8920,-87.6300,"asadorbastian","Signature cheeseburger"],
+[69,"The Grand Bar & Grill","Helsinki","Europe",60.1699,24.9384,"thegrand_helsinki","Signature cheeseburger"],
+[70,"Hermon's","Los Angeles","Americas",34.0620,-118.3080,"hermonsla","Smash cheeseburger"],
+[71,"Dreamburger","Nashville","Americas",36.1700,-86.7900,"dreamburgernash","Smash cheeseburger"],
+[72,"Peckish Burgers","London","Europe",51.5400,-0.1450,"peckish_burgers","Smash cheeseburger"],
+[73,"Funky Chicken Food Truck","Stockholm","Europe",59.3150,18.0750,"funkychickenfoodtruck","Smash cheeseburger"],
+[74,"Txula","New York","Americas",40.7220,-73.9870,"txulasteak","Txuleta beef cheeseburger"],
+[75,"Le Smash Burger","Amsterdam","Europe",52.3600,4.8850,"le_smashburger","Smash cheeseburger"],
+[76,"11 Woodfire","Dubai","Asia",25.1930,55.2500,"11woodfire","Wood-fired burger"],
+[77,"Le Rêve Restaurant","Brownsville, TX","Americas",25.9017,-97.4975,"le.reve.restaurant","Signature burger"],
+[78,"Gabos","Madrid","Europe",40.4300,-3.6880,"gabosmadrid","Smash cheeseburger"],
+[79,"Zuney","Cape Town","Africa",-33.9100,18.4100,"zuneywagyu","Classic Zuney Burger — wagyu smash, brioche, house sauce"],
+[80,"Gotham Burger Social Club","New York","Americas",40.7150,-73.9840,"gothamburgersocialclub","Smash cheeseburger"],
+[81,"CPH Smash","Copenhagen","Europe",55.6900,12.5530,"cphsmash","Smash cheeseburger"],
+[82,"Black Cactus BBQ","London","Europe",51.5340,-0.0570,"black.cactus.bbq","BBQ smash burger"],
+[83,"Little Bad Wolf","Chicago","Americas",41.9790,-87.6690,"littlebadwolfchicago","Signature cheeseburger"],
+[84,"The Boring Burger","Guildford","Europe",51.2362,-0.5704,"theboringburger","The Boring Cheeseburger — one burger, done perfectly"],
+[85,"Boneless","Helsinki","Europe",60.1620,24.9300,"boneless.fi","Smash cheeseburger"],
+[86,"Down South Deli","Oslo","Europe",59.9139,10.7522,"downsouthdeli","Southern-style smash cheeseburger"],
+[87,"Dove","London","Europe",51.5480,-0.0750,"i.feel.dove","Dove Cheeseburger — pub cheeseburger"],
+[88,"Hamburger America","New York","Americas",40.7270,-74.0030,"hamburger_america","Fried Onion Burger — Oklahoma-style, by George Motz"],
+[89,"Grindhouse Braserito","São Paulo","Americas",-23.5505,-46.6333,"grindhouse_braserito","Parrilla-style cheeseburger"],
+[90,"Dash Burger","Dublin","Europe",53.3420,-6.2500,"dashburger_","Smash cheeseburger"],
+[91,"Rekas Burgers","Malmö","Europe",55.6050,13.0038,"rekasburgers","Smash cheeseburger"],
+[92,"Jet Set","Providencia, Santiago","Americas",-33.4263,-70.6110,"soyjetset","Smash cheeseburger"],
+[93,"Jonas Burger","Dubai","Asia",25.2100,55.2750,"jonasburger.ae","Smash cheeseburger"],
+[94,"Franky's","Stockholm","Europe",59.3400,18.0600,"frankysburger","Smash cheeseburger"],
+[95,"Goldies Smashburger","Berlin","Europe",52.5100,13.3900,"goldies_smashburger","Smash cheeseburger"],
+[96,"Eleven Green","Dubai","Asia",25.1400,55.1850,"elevengreen.uae","Signature burger"],
+[97,"Doug's Burger","Oslo","Europe",59.9200,10.7400,"dougshamburger","Signature cheeseburger"],
+[98,"Leytonstone Tavern","London","Europe",51.5680,0.0100,"leytonstonetavern","Pub cheeseburger"],
+[99,"Simonette","Culver City, LA","Americas",34.0211,-118.3965,"simonetterestaurant","Bistro cheeseburger"],
+[100,"Mosh Burgers","Bruges","Europe",51.2093,3.2247,"mosh_burgers","Smash cheeseburger"],
+[101,"HiHo Cheeseburger","Santa Monica, LA","Americas",34.0130,-118.4900,"hihocheeseburger","Double Cheeseburger — 100% wagyu"]
 ];
 
-const data=R.map(r=>({rank:r[0],name:r[1],city:r[2],region:r[3],lat:r[4],lng:r[5],ig:r[6]}));
+const data=R.map(r=>({rank:r[0],name:r[1],city:r[2],region:r[3],lat:r[4],lng:r[5],ig:r[6],burger:r[7]}));
 
 // ---------- Map ----------
 const map=L.map('map',{zoomControl:false,worldCopyJump:true}).setView([25,10],2);
@@ -324,6 +326,7 @@ function popupHtml(d){
     <div class="pp-rank">NO. ${d.rank}</div>
     <div class="pp-name">${d.name.toUpperCase()}</div>
     <div class="pp-city">${d.city}</div>
+    <div class="pp-burger">🍔 ${d.burger}</div>
     <div class="pp-actions">
       <a class="pp-dir" href="${gm}" target="_blank" rel="noopener">Directions</a>
       <a class="pp-ig" href="https://www.instagram.com/${d.ig}/" target="_blank" rel="noopener">Instagram</a>
@@ -348,7 +351,7 @@ function visible(){
     if(activeFilter==='top10'&&d.rank>10)return false;
     if(activeFilter==='top25'&&d.rank>25)return false;
     if(['Europe','Americas','Asia','Oceania','Africa'].includes(activeFilter)&&d.region!==activeFilter)return false;
-    if(q&&!(d.name.toLowerCase().includes(q)||d.city.toLowerCase().includes(q)))return false;
+    if(q&&!(d.name.toLowerCase().includes(q)||d.city.toLowerCase().includes(q)||d.burger.toLowerCase().includes(q)))return false;
     return true;
   });
 }
@@ -365,7 +368,7 @@ function render(){
     const row=document.createElement('div');
     row.className='row';
     row.innerHTML=`<div class="rk ${tier(d.rank)}">${d.rank}</div>
-      <div><div class="nm">${d.name}</div><div class="ct">${d.city}</div></div>`;
+      <div><div class="nm">${d.name}</div><div class="ct">${d.city}</div><div class="bg">${d.burger}</div></div>`;
     row.onclick=()=>{
       closePanelOnMobile();
       map.setView([d.lat,d.lng],14,{animate:true});
