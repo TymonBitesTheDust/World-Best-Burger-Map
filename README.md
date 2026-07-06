@@ -2,9 +2,7 @@
 
 An interactive map of the **World's 101 Best Burgers (2026)**. Browse every ranked burger restaurant on a world map, search by name or city, filter by rank or region, and get directions to the exact spot.
 
-Built as a **single self-contained HTML file** — no build step, no server, no dependencies to install. It runs in any modern browser on Android, iOS, Windows, macOS, and Linux.
-
-> Ranking data sourced from [worldbestburgers.com](https://www.worldbestburgers.com/our-list). This is an unofficial fan project and is not affiliated with World Best Burgers.
+> Ranking data sourced from [worldbestburgers.com](https://www.worldbestburgers.com/our-list). 
 
 ## ✨ Features
 
