@@ -87,7 +87,7 @@ To update the ranking each year, edit this array — nothing else needs to chang
 - **Map style:** swap the tile URL — e.g. CARTO `dark_all` for dark mode, `light_all`/Positron for minimal, or standard OSM tiles.
 - **Rank tiers:** the `tier()` function controls which ranks get which badge color.
 
-## 🍖 Related Projects
+## 🥩 Related Projects
 
 See [SUPPORT.md](SUPPORT.md) for other maps in this series.
 
