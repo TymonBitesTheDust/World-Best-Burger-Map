@@ -87,13 +87,9 @@ To update the ranking each year, edit this array — nothing else needs to chang
 - **Map style:** swap the tile URL — e.g. CARTO `dark_all` for dark mode, `light_all`/Positron for minimal, or standard OSM tiles.
 - **Rank tiers:** the `tier()` function controls which ranks get which badge color.
 
-## 🤝 Contributing
+## 🍖 Related Projects
 
-Want to fix a pin, add a burger spot, or improve the UI? See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## 🔒 Security
-
-Found a security issue? See [SECURITY.md](SECURITY.md) for how to report it.
+See [SUPPORT.md](SUPPORT.md) for other maps in this series.
 
 ## 🙏 Credits
 
@@ -102,4 +98,4 @@ Found a security issue? See [SECURITY.md](SECURITY.md) for how to report it.
 
 ## 📄 License
 
-MIT — see [LICENSE](LICENSE). Do whatever you like, but keep the map tile and data attributions intact. The burger ranking itself belongs to worldbestburgers.com.
+MIT — do whatever you like, but keep the map tile and data attributions intact. The burger ranking itself belongs to worldbestburgers.com.
